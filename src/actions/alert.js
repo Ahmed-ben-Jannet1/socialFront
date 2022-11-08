@@ -1,7 +1,7 @@
 // import { SET_ALERT, REMOVE_ALERT } from "./types";
 // import uuid from "uuid";
 
-// import axios from "axios";
+import axios from "axios";
 // import { useRouteLoaderData } from "react-router-dom";
 // import setAuthToken from "../utils/setAuthToken";
 
