@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialAlertState = [{}];
+const initialAlertState = [];
 
 const alertSlice = createSlice({
   name: "alert",

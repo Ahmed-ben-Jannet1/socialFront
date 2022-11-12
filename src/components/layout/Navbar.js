@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { authActions } from "../../store/auth-slice";
+import { profileActions } from "../../store/profile-slice";
 const Navbar = () => {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const loading = useSelector((state) => state.auth.loading);
@@ -9,15 +10,20 @@ const Navbar = () => {
 
   function logoutHandler() {
     dispatch(authActions.LOGOUT_OR_FAIL());
+    dispatch(profileActions.CLEAR_PROFILE());
   }
 
   const authLinks = (
     <ul>
       <li>
-        <Link to="/">Developers</Link>
+        <Link to="/profiles">Developers</Link>
       </li>
+
       <li>
-        <Link to="/register">Dashboard</Link>
+        <Link to="/dashboard">
+          <i className="fas fa-user" />{" "}
+          <span className="hide-sm">Dashboard</span>
+        </Link>
       </li>
       <li>
         <a onClick={logoutHandler} href="#!">
@@ -31,7 +37,7 @@ const Navbar = () => {
   const guestLinks = (
     <ul>
       <li>
-        <Link to="/">Developers</Link>
+        <Link to="/profiles">Developers</Link>
       </li>
       <li>
         <Link to="/register">Register</Link>
