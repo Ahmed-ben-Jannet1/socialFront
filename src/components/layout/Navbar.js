@@ -1,16 +1,18 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { authActions } from "../../store/auth-slice";
 import { profileActions } from "../../store/profile-slice";
 const Navbar = () => {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const loading = useSelector((state) => state.auth.loading);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   function logoutHandler() {
     dispatch(authActions.LOGOUT_OR_FAIL());
     dispatch(profileActions.CLEAR_PROFILE());
+    navigate("/login");
   }
 
   const authLinks = (
@@ -18,7 +20,9 @@ const Navbar = () => {
       <li>
         <Link to="/profiles">Developers</Link>
       </li>
-
+      <li>
+        <Link to="/posts">Posts</Link>
+      </li>
       <li>
         <Link to="/dashboard">
           <i className="fas fa-user" />{" "}
@@ -50,13 +54,29 @@ const Navbar = () => {
 
   return (
     <nav className="navbar bg-dark">
-      <h1>
-        <Link to="/">
-          <i className="fas fa-code"></i> DevConnector
-        </Link>
-      </h1>
+      <ul>
+        <li>
+          <Link to="/" style={{ padding: "0" }}>
+            <img
+              style={{
+                width: "2.5rem ",
+                height: "2.5rem",
+              }}
+              src="/./logo192.png"
+              alt=""
+            />
+          </Link>
+        </li>
+        <li>
+          <h1>
+            <Link to="/" style={{ padding: "0" }}>
+              Posty
+            </Link>
+          </h1>
+        </li>
+      </ul>
       {isAuthenticated && !loading && authLinks}
-      {!isAuthenticated && !loading && guestLinks}
+      {!isAuthenticated && loading && guestLinks}
     </nav>
   );
 };

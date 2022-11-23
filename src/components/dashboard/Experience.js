@@ -43,11 +43,11 @@ const Experience = (props) => {
         <td> {exp.company} </td>
         <td className="hide-sm"> {exp.title} </td>
         <td>
-          <Moment format="YYYY/MM/DD"> {exp.from} </Moment> -
+          <Moment format="YYYY/MM/DD" date={exp.from} /> -{" "}
           {exp.to === null ? (
             " Now"
           ) : (
-            <Moment format="YYYY/MM/DD"> {exp.to} </Moment>
+            <Moment format="YYYY/MM/DD" date={exp.to} />
           )}
         </td>
         <td>
@@ -73,7 +73,7 @@ const Experience = (props) => {
             <th />
           </tr>
         </thead>
-        <tbody> {experiences} </tbody>
+        <tbody>{experiences}</tbody>
       </table>
     </Fragment>
   );

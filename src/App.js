@@ -18,6 +18,9 @@ import EditProfile from "./components/profile-form/EditProfile";
 import AddExperience from "./components/profile-form/AddExperience";
 import AddEducation from "./components/profile-form/AddEducation";
 import Profiles from "./components/profiles/Profiles";
+import Posts from "./components/posts/Posts";
+import Profile from "./components/profile/Profile";
+import Post from "./components/post/Post";
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -36,6 +39,7 @@ function App() {
       try {
         if (localStorage.token || isAuthenticated) {
           const res = await axios.get("/api/auth");
+
           return dispatch(authActions.USER_LOADED(res.data));
         }
       } catch (error) {
@@ -43,7 +47,7 @@ function App() {
       }
     }
     gettingUser();
-  }, [isAuthenticated]);
+  }, [isAuthenticated, dispatch]);
 
   return (
     <Fragment>
@@ -56,6 +60,8 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/profiles" element={<Profiles />} />
+        <Route path="/profile/:id" element={<Profile />} />
+
         <Route
           path="/dashboard"
           element={
@@ -93,6 +99,23 @@ function App() {
           element={
             <PrivateRoutes isLoggedIn={isAuthenticated && !loading}>
               <AddEducation />
+            </PrivateRoutes>
+          }
+        />
+        <Route
+          path="/posts"
+          element={
+            <PrivateRoutes isLoggedIn={isAuthenticated && !loading}>
+              <Posts />
+            </PrivateRoutes>
+          }
+        />
+
+        <Route
+          path="/posts/:id"
+          element={
+            <PrivateRoutes isLoggedIn={isAuthenticated && !loading}>
+              <Post />
             </PrivateRoutes>
           }
         />

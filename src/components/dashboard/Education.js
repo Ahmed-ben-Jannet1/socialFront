@@ -43,11 +43,11 @@ const Education = (props) => {
         <td> {edd.school} </td>
         <td className="hide-sm"> {edd.degree} </td>
         <td>
-          <Moment format="MM/DD/YYYY"> {edd.from} </Moment> -
+          <Moment format="YYYY/MM/DD" date={edd.from} /> -{" "}
           {edd.to === null ? (
             " Now"
           ) : (
-            <Moment format="MM/DD/YYYY"> {edd.to} </Moment>
+            <Moment format="YYYY/MM/DD" date={edd.to} />
           )}
         </td>
         <td>
@@ -73,7 +73,7 @@ const Education = (props) => {
             <th />
           </tr>
         </thead>
-        <tbody> {educations} </tbody>
+        <tbody>{educations}</tbody>
       </table>
     </Fragment>
   );

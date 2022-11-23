@@ -1,10 +1,17 @@
-import React from "react";
-
-import { Navigate } from "react-router-dom";
+import React, { Fragment } from "react";
 
 const PrivateRoutes = ({ isLoggedIn, children }) => {
   if (!isLoggedIn) {
-    return <Navigate to="/" replace />;
+    return (
+      <Fragment>
+        <section className="container">
+          <div style={{ textAlign: "center" }}>
+            <h1 className="large text-primary">Not Authenticated</h1>
+            <p className="lead">Error 401</p>
+          </div>
+        </section>
+      </Fragment>
+    );
   }
   return children;
 };

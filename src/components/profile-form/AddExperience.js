@@ -14,8 +14,8 @@ const AddExperience = () => {
     company: "",
     title: "",
     location: "",
-    form: "",
-    to: "",
+    form: null,
+    to: null,
     current: false,
     description: "",
   });

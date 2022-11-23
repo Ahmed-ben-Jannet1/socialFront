@@ -11,7 +11,7 @@ const ProfileItem = ({
   },
 }) => {
   return (
-    <section class="container">
+    <section className="container">
       <div className="profile bg-light">
         <img src={avatar} alt="" className="round-img" />
         <div>
