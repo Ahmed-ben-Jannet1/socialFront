@@ -33,7 +33,7 @@ const Dashboard = () => {
       }
     }
     getCurrentProfile();
-  }, []);
+  }, [dispatch]);
 
   function timing(idd) {
     setTimeout(() => dispatch(alertActions.REMOVE_ALERT(idd)), 5000);

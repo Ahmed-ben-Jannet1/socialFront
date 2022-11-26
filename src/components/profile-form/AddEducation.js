@@ -137,7 +137,7 @@ const AddEducation = () => {
                   setToDateDisabled(!toDateDisabled);
                 }}
               />{" "}
-              Current Field
+              Current
             </p>
           </div>
           <div className="form-group">

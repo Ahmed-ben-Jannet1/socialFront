@@ -76,7 +76,7 @@ const Navbar = () => {
         </li>
       </ul>
       {isAuthenticated && !loading && authLinks}
-      {!isAuthenticated && loading && guestLinks}
+      {!isAuthenticated && !loading && guestLinks}
     </nav>
   );
 };

@@ -9,8 +9,7 @@ const PostForm = () => {
   const [text, setText] = useState("");
   const dispatch = useDispatch();
 
-  async function addPost(e, formData) {
-    e.preventDefault();
+  async function addPost(formData) {
     const config = {
       headers: {
         "Content-Type": "application/json",
@@ -46,7 +45,8 @@ const PostForm = () => {
       </div>
       <form
         onSubmit={(e) => {
-          addPost(e, { text });
+          e.preventDefault();
+          addPost({ text });
           setText("");
         }}
         className="form my-1"

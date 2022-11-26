@@ -33,7 +33,12 @@ const Post = () => {
       }
     };
     getPost();
-    // openSocket("http://localhost:5000");
+    const socket = openSocket("http://localhost:5000");
+    socket.on("posts", (data) => {
+      if (data.action === "comment") {
+        getPost();
+      }
+    });
   }, [dispatch, id]);
 
   return loading || post === null ? (
