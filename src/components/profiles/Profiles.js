@@ -13,7 +13,9 @@ const Profiles = () => {
     async function getProfiles() {
       dispatch(profileActions.CLEAR_PROFILE);
       try {
-        const res = await axios.get("/api/profile");
+        const res = await axios.get(
+          `${process.env.REACT_APP_BACK}/api/profile`
+        );
 
         dispatch(profileActions.GET_PROFILES(res.data));
       } catch (error) {

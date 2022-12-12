@@ -22,7 +22,9 @@ const PostItem = ({
 
   const updateLike = async (postId) => {
     try {
-      const res = await axios.put(`/api/posts/like/${postId}`);
+      const res = await axios.put(
+        `${process.env.REACT_APP_BACK}/api/posts/like/${postId}`
+      );
 
       dispatch(postActions.UPDATE_LIKES({ id: postId, likes: res.data }));
       // window.location.reload();
@@ -38,7 +40,7 @@ const PostItem = ({
 
   const deletePost = async (id) => {
     try {
-      await axios.delete(`/api/posts/${id}`);
+      await axios.delete(`${process.env.REACT_APP_BACK}/api/posts/${id}`);
       dispatch(postActions.DELETE_POST(id));
       var idd = uuid();
       dispatch(

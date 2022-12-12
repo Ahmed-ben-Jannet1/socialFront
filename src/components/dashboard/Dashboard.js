@@ -19,7 +19,9 @@ const Dashboard = () => {
   useEffect(() => {
     async function getCurrentProfile() {
       try {
-        const res = await axios.get("/api/profile/me");
+        const res = await axios.get(
+          `${process.env.REACT_APP_BACK}/api/profile/me`
+        );
 
         dispatch(profileActions.GET_PROFILE(res.data));
       } catch (error) {
@@ -42,7 +44,7 @@ const Dashboard = () => {
   async function deleteAccount() {
     if (window.confirm("Are you sure ? this can not be undone !"))
       try {
-        await axios.delete(`/api/profile`);
+        await axios.delete(`${process.env.REACT_APP_BACK}/api/profile`);
         dispatch(profileActions.CLEAR_PROFILE());
         dispatch(authActions.LOGOUT_OR_FAIL());
         var idd = uuid();

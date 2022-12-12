@@ -17,7 +17,9 @@ const CommentItem = ({
 
   const deleteComment = async (postId, commentId) => {
     try {
-      await axios.delete(`/api/posts/comment/${postId}/${commentId}`);
+      await axios.delete(
+        `${process.env.REACT_APP_BACK}/api/posts/comment/${postId}/${commentId}`
+      );
       dispatch(postActions.REMOVE_COMMENT(commentId));
       var idd = uuid();
       dispatch(

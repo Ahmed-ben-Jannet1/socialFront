@@ -48,7 +48,11 @@ const Register = () => {
       };
       const body = JSON.stringify({ name, email, password });
       try {
-        const res = await axios.post("/api/users", body, config);
+        const res = await axios.post(
+          `${process.env.REACT_APP_BACK}/api/users`,
+          body,
+          config
+        );
         dispatch(authActions.REGISTER_SUCCESS({ token: res.data.token }));
       } catch (error) {
         const errors = error.response.data.errors;

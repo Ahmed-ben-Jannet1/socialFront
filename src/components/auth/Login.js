@@ -33,7 +33,11 @@ const Login = () => {
     };
     const body = JSON.stringify({ email, password });
     try {
-      const res = await axios.post("/api/auth", body, config);
+      const res = await axios.post(
+        `${process.env.REACT_APP_BACK}/api/auth`,
+        body,
+        config
+      );
       dispatch(authActions.REGISTER_SUCCESS({ token: res.data.token }));
     } catch (error) {
       const errors = error.response.data.errors;

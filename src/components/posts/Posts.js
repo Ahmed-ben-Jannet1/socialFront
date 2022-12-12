@@ -18,7 +18,7 @@ const Posts = () => {
   useEffect(() => {
     async function getPosts() {
       try {
-        const res = await axios.get("/api/posts");
+        const res = await axios.get(`${process.env.REACT_APP_BACK}/api/posts`);
         dispatch(postActions.GET_POSTS(res.data));
       } catch (error) {
         dispatch(
@@ -30,7 +30,7 @@ const Posts = () => {
       }
     }
     getPosts();
-    const socket = openSocket("http://localhost:5000");
+    const socket = openSocket(`${process.env.REACT_APP_BACK}`);
     socket.on("posts", (data) => {
       if (
         data.action === "create" ||

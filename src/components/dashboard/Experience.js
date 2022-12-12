@@ -15,7 +15,9 @@ const Experience = (props) => {
 
   async function deleteExperience(id) {
     try {
-      const res = await axios.delete(`/api/profile/experience/${id}`);
+      const res = await axios.delete(
+        `${process.env.REACT_APP_BACK}/api/profile/experience/${id}`
+      );
       dispatch(profileActions.UPDATE_PROFILE(res.data));
       var idd = uuid();
       dispatch(

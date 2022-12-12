@@ -16,7 +16,11 @@ const PostForm = () => {
       },
     };
     try {
-      const res = await axios.post(`/api/posts`, formData, config);
+      const res = await axios.post(
+        `${process.env.REACT_APP_BACK}/api/posts`,
+        formData,
+        config
+      );
       console.log(res.data);
       dispatch(postActions.ADD_POST(res.data));
       var idd = uuid();

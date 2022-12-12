@@ -15,7 +15,9 @@ const Education = (props) => {
 
   async function deleteEducation(id) {
     try {
-      const res = await axios.delete(`/api/profile/education/${id}`);
+      const res = await axios.delete(
+        `${process.env.REACT_APP_BACK}/api/profile/education/${id}`
+      );
       dispatch(profileActions.UPDATE_PROFILE(res.data));
       var idd = uuid();
       dispatch(

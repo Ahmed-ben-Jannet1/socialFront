@@ -20,7 +20,9 @@ const Profile = () => {
     async function getProfileById(id) {
       dispatch(profileActions.CLEAR_PROFILE());
       try {
-        const res = await axios.get(`/api/profile/user/${id}`);
+        const res = await axios.get(
+          `${process.env.REACT_APP_BACK}/api/profile/user/${id}`
+        );
 
         dispatch(profileActions.GET_PROFILE(res.data));
       } catch (error) {

@@ -40,7 +40,11 @@ const AddEducation = () => {
       },
     };
     try {
-      const res = await axios.put("/api/profile/education", formData, config);
+      const res = await axios.put(
+        `${process.env.REACT_APP_BACK}/api/profile/education`,
+        formData,
+        config
+      );
       dispatch(profileActions.UPDATE_PROFILE(res.data));
       const idd = uuid();
       dispatch(

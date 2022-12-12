@@ -17,7 +17,7 @@ const CommentForm = ({ postId }) => {
     };
     try {
       const res = await axios.post(
-        `/api/posts/comment/${postId}`,
+        `${process.env.REACT_APP_BACK}/api/posts/comment/${postId}`,
         formData,
         config
       );

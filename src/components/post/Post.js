@@ -21,7 +21,9 @@ const Post = () => {
   useEffect(() => {
     const getPost = async () => {
       try {
-        const res = await axios.get(`/api/posts/${id}`);
+        const res = await axios.get(
+          `${process.env.REACT_APP_BACK}/api/posts/${id}`
+        );
         dispatch(postActions.GET_POST(res.data));
       } catch (error) {
         dispatch(
@@ -33,7 +35,7 @@ const Post = () => {
       }
     };
     getPost();
-    const socket = openSocket("http://localhost:5000");
+    const socket = openSocket(`${process.env.REACT_APP_BACK}`);
     socket.on("posts", (data) => {
       if (data.action === "comment") {
         getPost();

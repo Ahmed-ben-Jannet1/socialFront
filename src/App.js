@@ -48,7 +48,7 @@ function App() {
       }
       try {
         if (localStorage.token || isAuthenticated) {
-          const res = await axios.get("/api/auth");
+          const res = await axios.get(`${process.env.REACT_APP_BACK}/api/auth`);
 
           return dispatch(authActions.USER_LOADED(res.data));
         }

@@ -81,7 +81,11 @@ const EditProfile = () => {
     };
     try {
       console.log(formData);
-      const res = await axios.post("/api/profile", formData, config);
+      const res = await axios.post(
+        `${process.env.REACT_APP_BACK}/api/profile`,
+        formData,
+        config
+      );
       dispatch(profileActions.GET_PROFILE(res.data));
       const idd = uuid();
       dispatch(

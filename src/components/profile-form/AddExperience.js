@@ -39,7 +39,11 @@ const AddExperience = () => {
       },
     };
     try {
-      const res = await axios.put("/api/profile/experience", formData, config);
+      const res = await axios.put(
+        `${process.env.REACT_APP_BACK}/api/profile/experience`,
+        formData,
+        config
+      );
       dispatch(profileActions.UPDATE_PROFILE(res.data));
       const idd = uuid();
       dispatch(
